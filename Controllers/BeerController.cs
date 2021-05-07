@@ -14,7 +14,7 @@ namespace BeerApi.Controllers
     [Route("/api/beer")]
     public class BeerController : ControllerBase
     {
-
+        public const string API_PATH = "/api/beer";
         private readonly BeerService _beerService;
 
         private readonly ILogger<BeerController> _logger;
@@ -43,7 +43,7 @@ namespace BeerApi.Controllers
             Beer beer = _beerService.GetBeer(id);
 
             if(beer == null){
-                return NotFound("/api/beer/" + id);
+                return NotFound(API_PATH + id);
             }
 
             return Ok(beer);
@@ -54,7 +54,7 @@ namespace BeerApi.Controllers
         public IActionResult CreateBeer(Beer beer){
             _logger.LogInformation("CreateBeer called, with object: {}",beer);
             _beerService.CreateBeer(beer);
-            return Created("/api/beer/" + beer.Id,"");
+            return Created(API_PATH + beer.Id,"");
         }
 
         [HttpPut]
