@@ -3,6 +3,8 @@
 
     String env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
     String mongoDbUrl = Environment.GetEnvironmentVariable("MONGODB_URL");
+    String rabbitMqHost =  Environment.GetEnvironmentVariable("RABBITMQ_HOST");
+    String rabbitMqPort = Environment.GetEnvironmentVariable("RABBITMQ_PORT");
 }
 
 @section scripts
@@ -71,6 +73,26 @@
         <td scope="row"><em>Indéfini</em></td>
     }else{
         <td scope="row"><em>@mongoDbUrl</em></td>
+    }
+    </tr>
+
+    <tr>
+      <td scope="row"><strong>RABBITMQ_HOST</strong></td>
+      @if (mongoDbUrl == null)
+    {
+        <td scope="row"><em>Indéfini</em></td>
+    }else{
+        <td scope="row"><em>@rabbitMqHost</em></td>
+    }
+    </tr>
+
+    <tr>
+      <td scope="row"><strong>RABBITMQ_PORT</strong></td>
+      @if (mongoDbUrl == null)
+    {
+        <td scope="row"><em>Indéfini</em></td>
+    }else{
+        <td scope="row"><em>@rabbitMqPort</em></td>
     }
     </tr>
     

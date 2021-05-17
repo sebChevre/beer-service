@@ -15,8 +15,15 @@ namespace BeerApi.Infrastructure.Messaging.Impl.RabbitMq
 
         private IConnection _connection;
 
+        string _rabbitMqHost;
+        int _rabbitMqPort;
+
         public RabbitMqHandler(){
-            _connectionFactory = new ConnectionFactory() { HostName = "localhost" };
+            
+            _rabbitMqHost =  Environment.GetEnvironmentVariable("RABBITMQ_HOST");
+            _rabbitMqPort = Int32.Parse(Environment.GetEnvironmentVariable("RABBITMQ_PORT"));
+            
+            _connectionFactory = new ConnectionFactory() { HostName = _rabbitMqHost, Port = _rabbitMqPort };
 
             CreateConnection();
            

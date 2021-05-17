@@ -28,6 +28,8 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "MONGODB_URL": "mongodb://localhost:27017",
+        "RABBITMQ_HOST":"localhost",
+        "RABBITMQ_PORT":"5672",
         "Jwt:Authority":"http://localhost:8080/auth/realms/beer-service",
         "Jwt:Audience":"external-client"
 
