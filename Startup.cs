@@ -63,7 +63,8 @@ namespace BeerApi
             {
                 //o.Authority = Configuration["Jwt:Authority"];
                 o.Authority = "http://keycloak:8080/auth/realms/beer-service";
-                o.Audience = Configuration["Jwt:Audience"];
+                //o.Audience = Configuration["Jwt:Audience"];
+                o.Audience = "external-client";
 
                 Console.WriteLine(Configuration["Jwt:Authority"]);
                 Console.WriteLine(Configuration["Jwt:Audience"]);
