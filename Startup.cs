@@ -17,9 +17,7 @@ using BeerApi.Infrastructure.Messaging.Impl;
 using BeerApi.Infrastructure.Messaging.Impl.RabbitMq;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System;
-
-
-
+using Microsoft.IdentityModel.Tokens;
 
 namespace BeerApi
 {
@@ -63,9 +61,15 @@ namespace BeerApi
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(o =>
             {
-                o.Authority = Configuration["Jwt:Authority"];
+                //o.Authority = Configuration["Jwt:Authority"];
+                o.Authority = "http://keycloak:8080/auth/realms/beer-service";
                 o.Audience = Configuration["Jwt:Audience"];
+
+                Console.WriteLine(Configuration["Jwt:Authority"]);
+                Console.WriteLine(Configuration["Jwt:Audience"]);
+
                 o.RequireHttpsMetadata = false;
+                 
                 o.Events = new JwtBearerEvents()
                 {
                     OnAuthenticationFailed = c =>
