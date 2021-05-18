@@ -23,7 +23,7 @@ namespace BeerApi
 {
     public class Startup
     {
-         public IWebHostEnvironment Environment { get; }
+        public IWebHostEnvironment Environment { get; }
 
         public Startup(IWebHostEnvironment env,IConfiguration configuration)
         {
@@ -55,20 +55,18 @@ namespace BeerApi
 
         private void ConfigureAuthentification(IServiceCollection services)
         {
+            
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(o =>
             {
-                //o.Authority = Configuration["Jwt:Authority"];
-                o.Authority = "http://keycloak:8080/auth/realms/beer-service";
-                //o.Audience = Configuration["Jwt:Audience"];
-                o.Audience = "external-client";
+                string JwtAudience = System.Environment.GetEnvironmentVariable("JWT_AUDIENCE");
+                string JwtAuthority = System.Environment.GetEnvironmentVariable("JWT_AUTHORITY");
 
-                Console.WriteLine(Configuration["Jwt:Authority"]);
-                Console.WriteLine(Configuration["Jwt:Audience"]);
-
+                o.Authority = JwtAuthority;
+                o.Audience = JwtAudience;
                 o.RequireHttpsMetadata = false;
                  
                 o.Events = new JwtBearerEvents()
