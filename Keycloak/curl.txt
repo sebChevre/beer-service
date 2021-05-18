@@ -1,2 +1,2 @@
 //request token
-curl --location --request POST 'keycloak:8080/auth/realms/beer-service/protocol/openid-connect/token' --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=password' --data-urlencode 'username=seb' --data-urlencode 'password=110978' --data-urlencode 'client_id=external-client'
+curl --location --request POST 'keycloak:8080/auth/realms/beershop-service/protocol/openid-connect/token' --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=password' --data-urlencode 'username=seb' --data-urlencode 'password=110978' --data-urlencode 'client_id=external-client'
