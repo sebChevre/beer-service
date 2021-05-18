@@ -1,0 +1,69 @@
+version: "3.9"
+services:
+  beer-service:
+    container_name: beer-service
+    image: sebchevre/beer-service:latest
+    ports:
+    - "9999:80"
+    environment: 
+    - ASPNETCORE_ENVIRONMENT=Production
+    - MONGODB_URL=mongodb://mongodb:27017
+    - ASPNETCORE_URLS=;http://+
+    - RABBITMQ_HOST=rabbitmq
+    - RABBITMQ_PORT=5672
+    - JWT_AUDIENCE=external-client
+    - JWT_AUTHORITY=http://keycloak:8080/auth/realms/beershop-service
+    depends_on:
+      - "rabbitmq"
+  
+  stock-service:
+    container_name: stock-service
+    image: sebchevre/stock-service:latest
+    ports:
+    - "9998:80"
+    environment: 
+    - ASPNETCORE_ENVIRONMENT=Production
+    - MONGODB_URL=mongodb://mongodb:27017
+    - ASPNETCORE_URLS=;http://+
+    - RABBITMQ_HOST=rabbitmq
+    - RABBITMQ_PORT=5672
+    - JWT_AUDIENCE=external-client
+    - JWT_AUTHORITY=http://keycloak:8080/auth/realms/beershop-service
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+  
+  keycloak:
+    container_name: keycloak
+    image: jboss/keycloak
+    ports: 
+    - 8080:8080
+    environment:
+    - KEYCLOAK_USER=admin
+    - KEYCLOAK_PASSWORD=pass
+    - KEYCLOAK_IMPORT=/import/beershop-service-realm.json
+    volumes:
+      -  "./import:/import"
+
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3-management
+    healthcheck: 
+      test: ["CMD","curl","-f","http://localhost:15672"] 
+      interval: 30s
+      timeout: 3s
+      retries: 5 
+    ports: 
+    - 15672:15672
+    - 5672:5672
+    
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    ports: 
+    - 27017:27017
+
+networks:
+  default:
+    external: true
+    name: beershop-network
