@@ -47,7 +47,7 @@ services:
 
   rabbitmq:
     container_name: rabbitmq
-    image: rabbitmq:3-management
+    image: sebchevre/rabbitmq-3.8-curl
     healthcheck: 
       test: ["CMD","curl","-f","http://localhost:15672"] 
       interval: 30s
@@ -62,8 +62,3 @@ services:
     image: mongo
     ports: 
     - 27017:27017
-
-networks:
-  default:
-    external: true
-    name: beershop-network
