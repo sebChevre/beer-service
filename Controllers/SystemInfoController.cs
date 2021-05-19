@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Mvc;
 using BeerApi.Infrastructure.Configuration;
 using BeerApi.Controllers.Response;
@@ -14,9 +13,11 @@ namespace BeerApi.Controllers
     public class SystemInfoController : ControllerBase
     {
 
+        private readonly ILogger<SystemInfoController> _logger;
         IBeerstoreDatabaseSettings _settings;
-        public SystemInfoController(IBeerstoreDatabaseSettings settings){
+        public SystemInfoController(IBeerstoreDatabaseSettings settings,ILogger<SystemInfoController> logger){
             _settings = settings;
+            _logger = logger;
         }
 
         [HttpGet]

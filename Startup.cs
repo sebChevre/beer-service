@@ -14,10 +14,7 @@ using Microsoft.AspNetCore.Http;
 using Prometheus;
 using BeerApi.Infrastructure.Messaging;
 using BeerApi.Infrastructure.Messaging.Impl;
-using BeerApi.Infrastructure.Messaging.Impl.RabbitMq;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using System;
-using Microsoft.IdentityModel.Tokens;
 
 namespace BeerApi
 {

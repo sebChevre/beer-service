@@ -1,6 +1,9 @@
 # reseau
 docker network create beershop-network
 
+#secret pour keycloak, swarm
+printf "<password>" | docker secret create KEYCLOAK_PASSWORD -
+
 # mongodb	
 docker run --rm -d --name mongodb --network beershop-network -p 27017:27017 mongo
 

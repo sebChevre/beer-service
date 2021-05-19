@@ -2,24 +2,27 @@ using System;
 using RabbitMQ.Client;
 using System.Text;
 using BeerApi.Services.Event;
+using Microsoft.Extensions.Logging;
+
 
 namespace BeerApi.Infrastructure.Messaging.Impl.RabbitMq
 {
 
 
-    public class RabbitMqHandler
+    public class RabbitMqHandler 
     {
 
-
+        
         private readonly ConnectionFactory _connectionFactory;
 
         private IConnection _connection;
 
+        private ILogger<RabbitMqHandler> _logger;
         string _rabbitMqHost;
         int _rabbitMqPort;
 
-        public RabbitMqHandler(){
-            
+        public RabbitMqHandler(ILogger<RabbitMqHandler> logger){
+            _logger = logger;
             _rabbitMqHost =  Environment.GetEnvironmentVariable("RABBITMQ_HOST");
             _rabbitMqPort = Int32.Parse(Environment.GetEnvironmentVariable("RABBITMQ_PORT"));
             
@@ -34,7 +37,7 @@ namespace BeerApi.Infrastructure.Messaging.Impl.RabbitMq
             {
                 using(var channel = _connection.CreateModel())
                 {
-                    channel.QueueDeclare(queue: "hello",
+                    channel.QueueDeclare(queue: MessagingConfig.BeerCreatedQueueName,
                                         durable: false,
                                         exclusive: false,
                                         autoDelete: false,
@@ -42,7 +45,7 @@ namespace BeerApi.Infrastructure.Messaging.Impl.RabbitMq
 
                     var b = new BeerCreatedEvent(){
                         BeerId = beerId,
-                        Location = "/api/beer/" + beerId
+                        Location = MessagingConfig.BeerCreatedApiPath + beerId
                         
                     };
 
@@ -50,11 +53,12 @@ namespace BeerApi.Infrastructure.Messaging.Impl.RabbitMq
 
                     var body = Encoding.UTF8.GetBytes(message);
 
-                    channel.BasicPublish(exchange: "",
-                                        routingKey: "hello",
+                    channel.BasicPublish(exchange: MessagingConfig.DefaultExchangeName,
+                                        routingKey: MessagingConfig.BeerCreatedQueueName,
                                         basicProperties: null,
                                         body: body);
-                    Console.WriteLine(" [x] Sent {0}", message);
+
+                   _logger.LogInformation("Message Sent {0}", message);
                 }
             }
             
@@ -81,7 +85,7 @@ namespace BeerApi.Infrastructure.Messaging.Impl.RabbitMq
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Could not create connection: {ex.Message}");
+                _logger.LogError($"Could not create connection: {ex.Message}");
             }
         }
     }
