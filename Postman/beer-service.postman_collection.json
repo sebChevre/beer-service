@@ -1,0 +1,274 @@
+{
+	"info": {
+		"_postman_id": "360206c0-fde3-4c3f-9fe6-0ad39d6f2564",
+		"name": "beer-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/api/beer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJzUjRjZzZLZ0dKT2l6WkhsdkRucl9LemdhVWpzbGY4eUlacUtPVEtNWXRBIn0.eyJleHAiOjE2MjE0MTE5NTYsImlhdCI6MTYyMTQxMTY1NiwianRpIjoiZDM3MjJkNTEtMzYwYi00YWNkLThmOTctYjdlN2U3MDk2MDMzIiwiaXNzIjoiaHR0cDovL2tleWNsb2FrOjgwODAvYXV0aC9yZWFsbXMvYmVlcnNob3AiLCJhdWQiOiJleHRlcm5hbC1jbGllbnQiLCJzdWIiOiJjMGNkNWFjYy1iOWU2LTQ0M2QtYmJiNS03NjM2OTlhNzYyNzUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJleHRlcm5hbC1jbGllbnQiLCJzZXNzaW9uX3N0YXRlIjoiYzcyNjUzZTEtNjhhMS00ZmEwLTg3NjAtNjMxYjY2NTcyNmZjIiwiYWNyIjoiMSIsInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJkZWZhdWx0LXJvbGVzLWJlZXJzaG9wIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImV4dGVybmFsLWNsaWVudCI6eyJyb2xlcyI6WyJhZG1pbmlzdHJhdG9yIiwiY29udHJpYnV0b3IiLCJyZWFkZXIiXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCBiZWVyc2hvcCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwicHJlZmVycmVkX3VzZXJuYW1lIjoic2ViIiwidXNlcl9yb2xlcyI6WyJhZG1pbmlzdHJhdG9yIiwiY29udHJpYnV0b3IiLCJyZWFkZXIiXX0.aIaDSg7wPKOnCEzyZJl4nRximWnMkoChhn-gx93ZwliLKuFqWnwlQR481hgaLvAsKfSt2i_jkLN-7na9ajrBCZlTGe9YXkwlCK3r5no-kTE7mqKmksL9v5z6gF14dXSWxrVTEg-9dvU5iNd4OgMZQEh2_J4GonXMCcGv3R-ms4The8m-iebNcmI-B3A91uYm7ZkGdpitgdkXOxljHZXFM7MS8pNVrh4xclDI9f6W5out0aggLKk9e8QO-UEXJJAo_LR5miHaTFsmyBKpEfqwS0Kpen9c9n9omsH71a5i8nW5dzHr0ZI8Z9TZFfRLdjT0l5Y8mU6QGRgdYD-AR4eMZw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"beername\":\"teasadsass\",\r\n\"category\":\"blanchetest99\",\r\n\"manufacturer\":\"Feldschos1schen\",\r\n\"price\":9.34}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{beer-service-host}}:{{beer-service-port}}/api/beer",
+					"host": [
+						"{{beer-service-host}}"
+					],
+					"port": "{{beer-service-port}}",
+					"path": [
+						"api",
+						"beer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/beer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response is an array\", () => {\r",
+							"    let jsonData = pm.response.json()\r",
+							"    pm.expect(jsonData).to.be.an(\"array\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJyT0hHc2p1ZE1qQWRTdWtkZ0VCTVBLaHlpTDljcG9KT2hYb3VJTUUtQTVvIn0.eyJleHAiOjE2MjAzOTA2NzUsImlhdCI6MTYyMDM5MDM3NSwianRpIjoiYzE5NGFiNjMtNDEyYi00MDIyLWI2MGUtMzMzMjBkNzY1NTBlIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL2JlZXItc2VydmljZSIsImF1ZCI6ImV4dGVybmFsLWNsaWVudCIsInN1YiI6ImRlMGViYmI5LTZhNmYtNDgzYy05ODMzLTZlYmY1MGYwMzY0OCIsInR5cCI6IkJlYXJlciIsImF6cCI6ImV4dGVybmFsLWNsaWVudCIsInNlc3Npb25fc3RhdGUiOiIzOTNkM2I5Zi1jODA4LTRhNTktODM0NS1jMThkNWQyYTI4ODEiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFkbWluaXN0cmF0b3IiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiZXh0ZXJuYWwtY2xpZW50Ijp7InJvbGVzIjpbImFkbWluaXN0cmF0b3IiLCJjb250cmlidXRvciIsInJlYWRlciJdfSwiYWNjb3VudDIiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCBiZWVyLXNlcnZpY2UiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6InNlYiIsInVzZXJfcm9sZXMiOlsiYWRtaW5pc3RyYXRvciIsImNvbnRyaWJ1dG9yIiwicmVhZGVyIl19.hDpjU31moI1Q65r0bu1t_b86V5htn_HyMhV4rQ9Jp0SaIT2ym-81gwerh-_xLMaS0WucDTCfiQkyLJS_J0WJwUx00hYk0QJTMLOvFjIIeuLZyLsZko8HZ18FltaqwEVB9Y0HAX4Q_IozHriQa4oETZC5woCjnEMkwl6Z2oPVXDrZHj0gVphrviz-r9kCoxDpER6HxupDbN4pZcnUnMi4uiUGy6UOtHv3glRKd_Oc97jqPbf3MFoGt-eSh84MSc8gvk8pkDC_If6aBAqBnmx3OSzohenpFjZqcPQPLlTH2hNdELr82avTeiBJJ7z6bkfNFGMl4L2GguRx6ARQJXiWmw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{beer-service-host}}:{{beer-service-port}}/api/beer",
+					"host": [
+						"{{beer-service-host}}"
+					],
+					"port": "{{beer-service-port}}",
+					"path": [
+						"api",
+						"beer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/beer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJyT0hHc2p1ZE1qQWRTdWtkZ0VCTVBLaHlpTDljcG9KT2hYb3VJTUUtQTVvIn0.eyJleHAiOjE2MjEyMjgzMzYsImlhdCI6MTYyMTIyODAzNiwianRpIjoiZWViYmI4MGYtNmFjNS00OTQ0LWI4YzctYmIxYzdjOTc1MWMyIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL2JlZXItc2VydmljZSIsImF1ZCI6ImV4dGVybmFsLWNsaWVudCIsInN1YiI6ImRlMGViYmI5LTZhNmYtNDgzYy05ODMzLTZlYmY1MGYwMzY0OCIsInR5cCI6IkJlYXJlciIsImF6cCI6ImV4dGVybmFsLWNsaWVudCIsInNlc3Npb25fc3RhdGUiOiI2ZDQwNWU5MS0xNTY5LTQyODYtYmNkNy1hYjkzMDQxY2NkOTIiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFkbWluaXN0cmF0b3IiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiZXh0ZXJuYWwtY2xpZW50Ijp7InJvbGVzIjpbImFkbWluaXN0cmF0b3IiLCJjb250cmlidXRvciIsInJlYWRlciJdfSwiYWNjb3VudDIiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCBiZWVyLXNlcnZpY2UiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6InNlYiIsInVzZXJfcm9sZXMiOlsiYWRtaW5pc3RyYXRvciIsImNvbnRyaWJ1dG9yIiwicmVhZGVyIl19.Qrq8hZAl5jk6m5ochGK0w1LXfclzbiceJTRaBUs42YUfDE1ThmhsXTXS3oD8e3F0gmB11fPgmTN2cwDIrwbnP57A9nsMD5kWIoFoW_9xInMeRM0Q2NTmxfEGKlq1URVH5eh4jU9RFWed70NcRqijpnn4OJ0xwso_IayeHXt8_2dtVQj821zOu7sHyNYiIiKbs0BKDa65hgdleA1lJO3ikpQXj4UgAWCuDQ_AhPyUHQaqOCUNBYlARP3NPihElidJiQY6EGVFuUlCvl556yR0qmMbCAVfrwRc0Y7W1d_gpWAF35-rfwcowq04gbzv-E--Voh-aMmIJB12wtn6wdN5zQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n        \"id\": \"6087e5baaf4a04fe88afd326\",\r\n        \"beerName\": \"teass\",\r\n        \"price\": 2.99,\r\n        \"category\": \"blanche\",\r\n        \"manufacturer\": \"Feldschos1schen\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{beer-service-host}}:{{beer-service-port}}/api/beer/6087e5baaf4a04fe88afd321",
+					"host": [
+						"{{beer-service-host}}"
+					],
+					"port": "{{beer-service-port}}",
+					"path": [
+						"api",
+						"beer",
+						"6087e5baaf4a04fe88afd321"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/beer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJyT0hHc2p1ZE1qQWRTdWtkZ0VCTVBLaHlpTDljcG9KT2hYb3VJTUUtQTVvIn0.eyJleHAiOjE2MjEyMjgzMzYsImlhdCI6MTYyMTIyODAzNiwianRpIjoiZWViYmI4MGYtNmFjNS00OTQ0LWI4YzctYmIxYzdjOTc1MWMyIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL2JlZXItc2VydmljZSIsImF1ZCI6ImV4dGVybmFsLWNsaWVudCIsInN1YiI6ImRlMGViYmI5LTZhNmYtNDgzYy05ODMzLTZlYmY1MGYwMzY0OCIsInR5cCI6IkJlYXJlciIsImF6cCI6ImV4dGVybmFsLWNsaWVudCIsInNlc3Npb25fc3RhdGUiOiI2ZDQwNWU5MS0xNTY5LTQyODYtYmNkNy1hYjkzMDQxY2NkOTIiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFkbWluaXN0cmF0b3IiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiZXh0ZXJuYWwtY2xpZW50Ijp7InJvbGVzIjpbImFkbWluaXN0cmF0b3IiLCJjb250cmlidXRvciIsInJlYWRlciJdfSwiYWNjb3VudDIiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCBiZWVyLXNlcnZpY2UiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6InNlYiIsInVzZXJfcm9sZXMiOlsiYWRtaW5pc3RyYXRvciIsImNvbnRyaWJ1dG9yIiwicmVhZGVyIl19.Qrq8hZAl5jk6m5ochGK0w1LXfclzbiceJTRaBUs42YUfDE1ThmhsXTXS3oD8e3F0gmB11fPgmTN2cwDIrwbnP57A9nsMD5kWIoFoW_9xInMeRM0Q2NTmxfEGKlq1URVH5eh4jU9RFWed70NcRqijpnn4OJ0xwso_IayeHXt8_2dtVQj821zOu7sHyNYiIiKbs0BKDa65hgdleA1lJO3ikpQXj4UgAWCuDQ_AhPyUHQaqOCUNBYlARP3NPihElidJiQY6EGVFuUlCvl556yR0qmMbCAVfrwRc0Y7W1d_gpWAF35-rfwcowq04gbzv-E--Voh-aMmIJB12wtn6wdN5zQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"6086895b1548ae4511a33cf4\",\r\n    \"beerName\": \"teass2323\",\r\n    \"price\": 2.64,\r\n    \"category\": \"blanche\",\r\n    \"manufacturer\": \"Feldschos1schen\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{beer-service-host}}:{{beer-service-port}}/api/beer/6087e5baaf4a04fe88afd326",
+					"host": [
+						"{{beer-service-host}}"
+					],
+					"port": "{{beer-service-port}}",
+					"path": [
+						"api",
+						"beer",
+						"6087e5baaf4a04fe88afd326"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/beer/6086a745632504bec716307a",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJyT0hHc2p1ZE1qQWRTdWtkZ0VCTVBLaHlpTDljcG9KT2hYb3VJTUUtQTVvIn0.eyJleHAiOjE2MjEyMjgzMzYsImlhdCI6MTYyMTIyODAzNiwianRpIjoiZWViYmI4MGYtNmFjNS00OTQ0LWI4YzctYmIxYzdjOTc1MWMyIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL2JlZXItc2VydmljZSIsImF1ZCI6ImV4dGVybmFsLWNsaWVudCIsInN1YiI6ImRlMGViYmI5LTZhNmYtNDgzYy05ODMzLTZlYmY1MGYwMzY0OCIsInR5cCI6IkJlYXJlciIsImF6cCI6ImV4dGVybmFsLWNsaWVudCIsInNlc3Npb25fc3RhdGUiOiI2ZDQwNWU5MS0xNTY5LTQyODYtYmNkNy1hYjkzMDQxY2NkOTIiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFkbWluaXN0cmF0b3IiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiZXh0ZXJuYWwtY2xpZW50Ijp7InJvbGVzIjpbImFkbWluaXN0cmF0b3IiLCJjb250cmlidXRvciIsInJlYWRlciJdfSwiYWNjb3VudDIiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCBiZWVyLXNlcnZpY2UiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6InNlYiIsInVzZXJfcm9sZXMiOlsiYWRtaW5pc3RyYXRvciIsImNvbnRyaWJ1dG9yIiwicmVhZGVyIl19.Qrq8hZAl5jk6m5ochGK0w1LXfclzbiceJTRaBUs42YUfDE1ThmhsXTXS3oD8e3F0gmB11fPgmTN2cwDIrwbnP57A9nsMD5kWIoFoW_9xInMeRM0Q2NTmxfEGKlq1URVH5eh4jU9RFWed70NcRqijpnn4OJ0xwso_IayeHXt8_2dtVQj821zOu7sHyNYiIiKbs0BKDa65hgdleA1lJO3ikpQXj4UgAWCuDQ_AhPyUHQaqOCUNBYlARP3NPihElidJiQY6EGVFuUlCvl556yR0qmMbCAVfrwRc0Y7W1d_gpWAF35-rfwcowq04gbzv-E--Voh-aMmIJB12wtn6wdN5zQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{beer-service-host}}:{{beer-service-port}}/api/beer/608f8dc35e1fa6c51b725d1a",
+					"host": [
+						"{{beer-service-host}}"
+					],
+					"port": "{{beer-service-port}}",
+					"path": [
+						"api",
+						"beer",
+						"608f8dc35e1fa6c51b725d1a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/build",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{beer-service-host}}:{{beer-service-port}}/api/build",
+					"host": [
+						"{{beer-service-host}}"
+					],
+					"port": "{{beer-service-port}}",
+					"path": [
+						"api",
+						"build"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/sysinfo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{beer-service-host}}:{{beer-service-port}}/api/sysinfo",
+					"host": [
+						"{{beer-service-host}}"
+					],
+					"port": "{{beer-service-port}}",
+					"path": [
+						"api",
+						"sysinfo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/metrics",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{beer-service-host}}:{{beer-service-port}}/metrics",
+					"host": [
+						"{{beer-service-host}}"
+					],
+					"port": "{{beer-service-port}}",
+					"path": [
+						"metrics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/swagger/v1/swagger.json",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{beer-service-host}}:{{beer-service-port}}/swagger/v1/swagger.json",
+					"host": [
+						"{{beer-service-host}}"
+					],
+					"port": "{{beer-service-port}}",
+					"path": [
+						"swagger",
+						"v1",
+						"swagger.json"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
