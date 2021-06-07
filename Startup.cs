@@ -34,11 +34,7 @@ namespace BeerApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<ForwardedHeadersOptions>(options =>
-            {
-                options.ForwardedHeaders =
-                    ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
-            });
+            
             //DI business services
             services.AddSingleton<BeerService, BeerServiceImpl>();
 
@@ -110,17 +106,8 @@ namespace BeerApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseForwardedHeaders();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                app.UseForwardedHeaders();
-                app.UseHsts();
-            }
+            app.UsePathBase("/beer-service");
+            
 
             ConfigureSwagger(app);
 
