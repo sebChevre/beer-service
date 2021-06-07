@@ -15,6 +15,7 @@ using Prometheus;
 using BeerApi.Infrastructure.Messaging;
 using BeerApi.Infrastructure.Messaging.Impl;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.HttpOverrides;
 
 namespace BeerApi
 {
@@ -120,7 +121,7 @@ namespace BeerApi
                 app.UseForwardedHeaders();
                 app.UseHsts();
             }
-            
+
             ConfigureSwagger(app);
 
             if (env.IsDevelopment())
