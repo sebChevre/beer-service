@@ -19,7 +19,7 @@
 
         $.ajax({
             type: "GET",
-            url: "api/build",
+            url: "/api/build",
             contentType: dataType,
             success: function (data){
                 console.log(data)
@@ -41,7 +41,7 @@
 
         $.ajax({
             type: "GET",
-            url: "api/sysinfo",
+            url: "/api/sysinfo",
             contentType: dataType,
             success: function (data){
                 console.log(data)
