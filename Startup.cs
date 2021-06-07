@@ -106,7 +106,8 @@ namespace BeerApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //app.UsePathBase("/beer-service");
+            string basePath = System.Environment.GetEnvironmentVariable("BASE_PATH");
+            app.UsePathBase(basePath);
             
 
             ConfigureSwagger(app);
