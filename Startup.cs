@@ -86,6 +86,11 @@ namespace BeerApi
                 options.AddPolicy("reader", policy => policy.RequireClaim("user_roles", "reader"));
                 options.AddPolicy("contributor", policy => policy.RequireClaim("user_roles", "contributor"));
             });
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.ForwardedHeaders =
+                    ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+            });
         }
 
         private void ConfigureDataBaseSettings(IServiceCollection services)
@@ -104,6 +109,18 @@ namespace BeerApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseForwardedHeaders();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+                app.UseForwardedHeaders();
+                app.UseHsts();
+            }
+            
             ConfigureSwagger(app);
 
             if (env.IsDevelopment())
