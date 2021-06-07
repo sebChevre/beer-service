@@ -15,12 +15,12 @@
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "MONGODB_URL": "mongodb://localhost:27017",
+        "MONGODB_URL": "localhost:27017",
         "MONGODB_USERNAME": "root",
         "MONGODB_PASS": "root",
         "RABBITMQ_HOST":"localhost",
         "RABBITMQ_PORT":"5672",
-        "JWT_AUTHORITY":"http://localhost:8080/auth/realms/beershop-service",
+        "JWT_AUTHORITY":"http://localhost:8080/auth/realms/beershop",
         "JWT_AUDIENCE":"external-client"
       }
     },
@@ -32,12 +32,12 @@
       "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "MONGODB_URL": "mongodb://localhost:27017",
+        "MONGODB_URL": "localhost:27017",
         "MONGODB_USERNAME": "root",
         "MONGODB_PASS": "root",
         "RABBITMQ_HOST":"localhost",
         "RABBITMQ_PORT":"5672",
-        "JWT_AUTHORITY":"http://localhost:8080/auth/realms/beershop-service",
+        "JWT_AUTHORITY":"http://localhost:8080/auth/realms/beershop",
         "JWT_AUDIENCE":"external-client"
 
       }

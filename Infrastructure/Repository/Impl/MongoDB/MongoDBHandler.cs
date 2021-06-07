@@ -17,11 +17,10 @@ namespace BeerApi.Infrastructure.Repository.Impl.MongoDB
         public MongoDBHandler(IBeerstoreDatabaseSettings settings)
         {
             _mongoUrl =  Environment.GetEnvironmentVariable("MONGODB_URL");
-            _mongoUsername =  Environment.GetEnvironmentVariable("MONGODB_URL");
             var mongoUsername =  Environment.GetEnvironmentVariable("MONGODB_USERNAME");
             var mongoPass =  Environment.GetEnvironmentVariable("MONGODB_PASS");
 
-            var connectionString = String.Format("mongodb://{0}:{1}@{2}",_mongoUrl,mongoUsername,mongoPass);
+            var connectionString = String.Format("mongodb://{0}:{1}@{2}",mongoUsername,mongoPass,_mongoUrl);
             
             
             if(_mongoUrl != null){
