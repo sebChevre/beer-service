@@ -34,7 +34,11 @@ namespace BeerApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.ForwardedHeaders =
+                    ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+            });
             //DI business services
             services.AddSingleton<BeerService, BeerServiceImpl>();
 
@@ -87,11 +91,7 @@ namespace BeerApi
                 options.AddPolicy("reader", policy => policy.RequireClaim("user_roles", "reader"));
                 options.AddPolicy("contributor", policy => policy.RequireClaim("user_roles", "contributor"));
             });
-            services.Configure<ForwardedHeadersOptions>(options =>
-            {
-                options.ForwardedHeaders =
-                    ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
-            });
+            
         }
 
         private void ConfigureDataBaseSettings(IServiceCollection services)
