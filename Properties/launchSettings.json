@@ -20,6 +20,8 @@
         "MONGODB_PASS": "root",
         "RABBITMQ_HOST":"localhost",
         "RABBITMQ_PORT":"5672",
+        "RABBITMQ_USERNAME":"root",
+        "RABBITMQ_PASSWORD":"root",
         "JWT_AUTHORITY":"http://localhost:8080/auth/realms/beershop",
         "JWT_AUDIENCE":"external-client"
       }
@@ -37,6 +39,8 @@
         "MONGODB_PASS": "root",
         "RABBITMQ_HOST":"localhost",
         "RABBITMQ_PORT":"5672",
+        "RABBITMQ_USERNAME":"guest",
+        "RABBITMQ_PASSWORD":"guest",
         "JWT_AUTHORITY":"http://localhost:8080/auth/realms/beershop",
         "JWT_AUDIENCE":"external-client"
 
