@@ -156,7 +156,7 @@ namespace BeerApi
             app.UseSwaggerUI(c =>
             {
                 
-                c.SwaggerEndpoint("./swagger/v1/swagger.json", "beer-service v" + ThisAssembly.Git.SemVer.Major + "." + ThisAssembly.Git.SemVer.Minor + "." + ThisAssembly.Git.SemVer.Patch);
+                c.SwaggerEndpoint("v1/swagger.json", "beer-service v" + ThisAssembly.Git.SemVer.Major + "." + ThisAssembly.Git.SemVer.Minor + "." + ThisAssembly.Git.SemVer.Patch);
             });
         }
 
