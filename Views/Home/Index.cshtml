@@ -32,14 +32,30 @@
                 $('#comitDate').text(data.commitDate);
                 $('#sha').text(data.sha);
 
-                $('#conf_spinner').hide();
+                
+            },
+            failure: function(errMsg) {
+                console.error(errMsg);
+            }
+        });
 
+        $.ajax({
+            type: "GET",
+            url: "api/sysinfo",
+            contentType: dataType,
+            success: function (data){
+                console.log(data)
+                $('#ip').text(data.ip);
+                $('#host').text(data.host);
+                $('#localip').text(data.localIp);
             },
             failure: function(errMsg) {
                 console.error(errMsg);
             }
         });
        
+       $('#conf_spinner').hide();
+
 
    })
 
@@ -157,6 +173,28 @@
             <td id="comitDate" scope="row"><em>[Date]</em></td>
         </tr>
 
+    </tbody>
+</table>
+
+<div class="text-center">
+    <h4>System Info</h4>
+</div>
+
+<table class="table table-hover">
+    <tbody>
+        <tr>
+            <td scope="row"><strong>IP</strong></td>
+            <td id="ip" scope="row"><em>[IP]</em></td>
+        </tr>
+        <tr>
+            <td scope="row"><strong>Host<strong></td>
+            <td id="host" scope="row"><em>[Host]</em></td>
+        </tr>
+        <tr>
+            <td scope="row"><strong>LocalIP</strong></td>
+            <td id="localip" scope="row"><em>[LocalIP]</em></td>
+        </tr>
+        
     </tbody>
 </table>
 
