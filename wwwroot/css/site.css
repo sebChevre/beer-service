@@ -14,110 +14,96 @@ a {
 
 .btn-primary {
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  background-color: #000000;
+  border-color: #000000;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  background-color: #000000;
+  border-color: #000000;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+[data-toggle="collapse"] i:before {
+  content: "\f068";
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+[data-toggle="collapse"].collapsed i:before {
+  content: "\f067";
 }
 
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+
+[data-toggle=collapse] i:before {
+  content: "";
 }
 
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+[data-toggle=collapse].collapsed i:before {
+  content: "";
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
+#accordion .card-header {
+  margin-bottom: 8px;
+}
+#accordion .accordion-title {
   position: relative;
-  min-height: 100%;
-}
-
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
-.footer {
-  position: absolute;
-  bottom: 0;
+  display: block;
+  padding: 8px 0 8px 50px;
+  background: #213744;
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
   width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+  text-align: left;
+  transition: all 0.4s ease-in-out;
 }
-
-.corner-ribbon.top-left{
-  top: 25px;
-  left: -50px;
-  transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-}
-
-td{
-  width: 30%;
-}
-.corner-ribbon{
-  width: 200px;
-  background: #e43;
+#accordion .accordion-title i {
   position: absolute;
-  top: 25px;
-  left: -50px;
+  width: 40px;
+  height: 100%;
+  left: 0;
+  top: 0;
+  color: #fff;
+  background: radial-gradient(rgba(33, 55, 68, 0.8), #213744);
   text-align: center;
-  line-height: 50px;
-  letter-spacing: 1px;
-  color: #f0f0f0;
-  transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-  z-index: 1;
+  border-right: 1px solid transparent;
+}
+#accordion .accordion-title:hover {
+  padding-left: 60px;
+  background: #213744;
+  color: #fff;
+}
+#accordion .accordion-title:hover i {
+  border-right: 1px solid #fff;
+}
+#accordion .accordion-body {
+  padding: 40px 55px;
+}
+#accordion .accordion-body ul {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+#accordion .accordion-body li {
+  padding-left: 1.2rem;
+  text-indent: -1.2rem;
+}
+#accordion .accordion-body li:before {
+  content: "";
+  padding-right: 5px;
+  font-family: "Flaticon";
+  font-size: 16px;
+  font-style: normal;
+  color: #213744;
 }
 
-.green{
-  background: rgb(51, 238, 82);
-}
-/* Custom styles */
-
-.corner-ribbon.sticky{
-  position: fixed;
+h4{
+  color: #0e0e0e !important;
 }
 
-.version{
-  font-style: italic;
-  font-weight: bolder;
-}
-
-.gitvalue{
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.gitlabel{
-  font-size: 12px;
-}
-
-.call-pipedream-btn{
-  margin: 10px;
+.btn-link:hover{
+  color: #0e0e0e !important;
+  text-decoration: #0366d6;
 }
